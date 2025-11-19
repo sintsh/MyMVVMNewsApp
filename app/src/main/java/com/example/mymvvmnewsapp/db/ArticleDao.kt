@@ -8,6 +8,10 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.mymvvmnewsapp.models.Article
 
+/**
+ * Data-access layer for the local `articles` table. Exposes CRUD operations used by the
+ * ViewModel to persist users' saved stories and observe updates reactively.
+ */
 @Dao
 interface ArticleDao {
 

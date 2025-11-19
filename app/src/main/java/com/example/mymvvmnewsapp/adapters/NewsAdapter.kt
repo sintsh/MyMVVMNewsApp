@@ -12,6 +12,11 @@ import com.bumptech.glide.Glide
 import com.example.mymvvmnewsapp.R
 import com.example.mymvvmnewsapp.models.Article
 
+/**
+ * RecyclerView adapter that renders a scrollable list of [Article] previews.
+ * Uses [AsyncListDiffer] for efficient updates and exposes a click listener
+ * so fragments can handle navigation without duplicating code.
+ */
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
 

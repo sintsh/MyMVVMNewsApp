@@ -26,6 +26,11 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * Houses the keyword search experience: debounces user input, triggers paged queries
+ * through [NewsViewModel.searchNews], and mirrors the endless-scroll UX from breaking
+ * news while surfacing loading/error indicators for the entered query.
+ */
 class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
 
     lateinit var  viewModel: NewsViewModel

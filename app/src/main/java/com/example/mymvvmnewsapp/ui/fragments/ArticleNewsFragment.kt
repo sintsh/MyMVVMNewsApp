@@ -14,6 +14,10 @@ import com.example.mymvvmnewsapp.ui.NewsViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
+/**
+ * Detail screen that renders the selected [Article] inside a WebView and exposes a FAB
+ * for persisting the article locally. Receives arguments via SafeArgs from any list fragment.
+ */
 class ArticleNewsFragment: Fragment(R.layout.fragment_article) {
 
     lateinit var  viewModel: NewsViewModel

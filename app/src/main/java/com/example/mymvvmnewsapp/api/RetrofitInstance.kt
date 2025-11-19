@@ -6,6 +6,10 @@ import retrofit2.Retrofit
 import com.example.mymvvmnewsapp.util.Constants.Companion.BASE_URL
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Lazily creates the single Retrofit client used across the app, wiring in logging,
+ * the NewsAPI base URL, and the GSON converter. Provides a typed [NewsAPI] service.
+ */
 class RetrofitInstance {
     companion object{
         private val retrofit by lazy {

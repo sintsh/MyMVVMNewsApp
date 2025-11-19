@@ -4,6 +4,10 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.example.mymvvmnewsapp.models.Source
 
+/**
+ * Room type converters used to serialize complex objects (like [Source]) into primitive
+ * values that SQLite understands, and to reconstruct them when reading from disk.
+ */
 class Converters {
     @TypeConverter
     fun fromSource(source: Source?): String? {

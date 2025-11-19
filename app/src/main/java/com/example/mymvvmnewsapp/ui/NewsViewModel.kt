@@ -23,6 +23,11 @@ import kotlinx.coroutines.launch
 import okio.IOException
 import retrofit2.Response
 
+/**
+ * Central presentation layer that coordinates UI state for breaking headlines, search results,
+ * and saved articles. Handles pagination bookkeeping, network safety, offline persistence calls,
+ * and exposes [Resource]-wrapped LiveData streams that fragments observe to update the UI.
+ */
 class NewsViewModel (
     app: Application,
     val newsRepository : NewsRepository

@@ -15,6 +15,11 @@ import com.example.mymvvmnewsapp.ui.NewsActivity
 import com.example.mymvvmnewsapp.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
+/**
+ * Presents the Room-backed list of saved articles, enabling swipe-to-delete with undo,
+ * SafeArgs navigation into detail, and automatic UI updates by observing the DAO’s
+ * `LiveData<List<Article>>`.
+ */
 class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
     lateinit var  viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter

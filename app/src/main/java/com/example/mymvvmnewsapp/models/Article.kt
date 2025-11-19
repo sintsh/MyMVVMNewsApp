@@ -5,6 +5,10 @@ import androidx.room.PrimaryKey
 import com.example.mymvvmnewsapp.models.Source
 import java.io.Serializable
 
+/**
+ * Room entity + API DTO that represents a news article. Acts as the single source
+ * of truth shared between Retrofit responses, the database, and UI adapters.
+ */
 @Entity(
     tableName = "articles"
 )

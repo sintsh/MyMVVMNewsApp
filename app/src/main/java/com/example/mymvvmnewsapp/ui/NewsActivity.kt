@@ -11,6 +11,12 @@ import com.example.mymvvmnewsapp.db.ArticleDatabase
 import com.example.mymvvmnewsapp.repository.NewsRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Single-activity host that wires together the Navigation component, bottom navigation UI,
+ * and the shared [NewsViewModel] instance that every fragment consumes. This activity is
+ * responsible for bootstrapping the repository/database stack and exposing the ViewModel
+ * to child fragments via `activity as NewsActivity`.
+ */
 class NewsActivity : AppCompatActivity() {
 
     // Shared ViewModel instance that fragments retrieve from this activity

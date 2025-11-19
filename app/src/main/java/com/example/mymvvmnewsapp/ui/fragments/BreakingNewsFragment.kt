@@ -18,6 +18,11 @@ import com.example.mymvvmnewsapp.ui.NewsViewModel
 import com.example.mymvvmnewsapp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.mymvvmnewsapp.util.Resource
 
+/**
+ * Displays the "Breaking" tab, subscribing to [NewsViewModel.breakingNews] and
+ * providing endless-scroll pagination, navigation into article detail, and
+ * loading/error feedback for the top-headlines feed.
+ */
 class BreakingNewsFragment: Fragment(R.layout.fragment_breaking_news) {
     // Shared ViewModel retrieved from host activity
     lateinit var  viewModel: NewsViewModel

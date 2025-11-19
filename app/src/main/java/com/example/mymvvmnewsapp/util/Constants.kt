@@ -1,5 +1,9 @@
 package com.example.mymvvmnewsapp.util
 
+/**
+ * Holds compile-time constants that are shared across multiple layers, such as API keys,
+ * base URLs, pagination size, and debounce delays.
+ */
 class Constants {
 
     companion object{

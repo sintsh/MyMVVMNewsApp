@@ -9,6 +9,10 @@ import retrofit2.http.GET
 
 import retrofit2.http.Query
 
+/**
+ * Retrofit definition of the NewsAPI.org REST endpoints leveraged by the app.
+ * Provides both the top-headlines and keyword search operations with paging support.
+ */
 interface NewsAPI {
 
     @GET("v2/top-headlines")

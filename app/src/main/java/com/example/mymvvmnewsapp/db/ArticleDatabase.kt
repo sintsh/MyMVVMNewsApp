@@ -8,6 +8,11 @@ import androidx.room.TypeConverters
 
 import com.example.mymvvmnewsapp.models.Article
 
+/**
+ * Room database that stores `Article` entities for offline access. Provides a singleton
+ * instance so the entire application reuses the same underlying SQLite connection and
+ * converter configuration.
+ */
 @Database(
     entities = [Article::class],
     version = 1,

@@ -5,6 +5,11 @@ import com.example.mymvvmnewsapp.api.RetrofitInstance
 import com.example.mymvvmnewsapp.db.ArticleDatabase
 import com.example.mymvvmnewsapp.models.Article
 
+/**
+ * Repository layer that abstracts both remote (Retrofit) and local (Room) data sources.
+ * Fragments/ViewModels talk to this class so swapping implementations or adding caching
+ * in the future requires minimal changes outside this file.
+ */
 class NewsRepository(
     val db: ArticleDatabase
 ) {
