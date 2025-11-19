@@ -54,6 +54,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
 
 
 
+        // Provide swipe-to-delete gestures for saved articles
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
@@ -76,6 +77,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
 
                 Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_SHORT).apply {
                     setAction("Undo"){
+                        // Reinsert the article when the user taps UNDO
                         viewModel.saveArticle(article)
                     }
                     show()
@@ -91,6 +93,7 @@ class SavedNewsFragment: Fragment(R.layout.fragment_saved_news) {
 
         viewModel.getSavedNews().observe(viewLifecycleOwner, Observer{articles ->
 
+            // LiveData from Room emits whenever the DB table changes
             newsAdapter.differ.submitList(articles)
 
         })

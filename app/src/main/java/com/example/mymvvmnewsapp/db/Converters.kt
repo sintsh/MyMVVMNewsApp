@@ -7,11 +7,13 @@ import com.example.mymvvmnewsapp.models.Source
 class Converters {
     @TypeConverter
     fun fromSource(source: Source?): String? {
+        // Persist the human-readable source name in the DB
         return source?.name
     }
 
     @TypeConverter
     fun toSource(name: String?): Source? {
+        // Rehydrate Source objects when reading from Room
         return name?.let { Source(it, it) }
     }
 }

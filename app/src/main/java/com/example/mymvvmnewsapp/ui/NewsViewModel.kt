@@ -27,17 +27,19 @@ class NewsViewModel (
     app: Application,
     val newsRepository : NewsRepository
 ): AndroidViewModel(app) {
+    // Backing state for breaking-news tab
     val breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var breakingNewsPage = 1
     var breakingNewsResponse: NewsResponse? = null
 
-
+    // Backing state for search tab
     val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
     var searchNewsResponse: NewsResponse? = null
 
 
     init {
+        // Preload US headlines so the UI has immediate data
         getBreakingNews("us")
     }
 
@@ -105,6 +107,7 @@ class NewsViewModel (
         try{
             if (hasInternetConnection()) {
 
+                // Request the next page of top headlines for the provided country
                 val response = newsRepository.searchNews(countryCode, breakingNewsPage)
 
                 breakingNews.postValue(handleBreakingNewsResponse(response))
@@ -126,6 +129,7 @@ class NewsViewModel (
         try{
             if (hasInternetConnection()) {
 
+                // Request the next page of keyword-based results
                 val response = newsRepository.getBreakingNews(searchQuery, searchNewsPage)
 
                 searchNews.postValue(handleSearchNewsResponse(response))
@@ -143,6 +147,7 @@ class NewsViewModel (
 
 
     private fun hasInternetConnection(): Boolean{
+        // ConnectivityManager differs pre/post Android M, so handle both APIs here
         val connectivityManager = getApplication<NewsApplication>().getSystemService(
             Context.CONNECTIVITY_SERVICE
         ) as ConnectivityManager

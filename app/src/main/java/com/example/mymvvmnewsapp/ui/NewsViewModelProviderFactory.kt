@@ -11,6 +11,7 @@ class NewsViewModelProviderFactory(
     val newsRepository: NewsRepository
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        // Inject both the Application context and repository into NewsViewModel
         return NewsViewModel(app,newsRepository ) as T
     }
 }

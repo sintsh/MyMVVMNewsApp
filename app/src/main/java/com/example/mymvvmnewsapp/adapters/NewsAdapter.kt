@@ -15,6 +15,7 @@ import com.example.mymvvmnewsapp.models.Article
 class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
 
+    // Simple holder that exposes the inflated row views
     inner class ArticleViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>(){
@@ -22,6 +23,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
             oldItem: Article,
             newItem: Article
         ): Boolean {
+            // Use the article URL as a stable identifier
             return  oldItem.url == newItem.url
         }
 
@@ -56,7 +58,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     ) {
         val article = differ.currentList[position]
         holder.itemView.apply {
-            // FIX: Use findViewById to get a reference to the ImageView
+            // Look up row views manually because we are not using ViewBinding here
             val ivArticleImage: ImageView = findViewById(R.id.ivArticleImage)
             val tvSource: TextView = findViewById(R.id.tvSource)
             val tvTitle: TextView = findViewById(R.id.tvTitle)
@@ -82,6 +84,7 @@ class NewsAdapter: RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     private var onItemClickListener:((Article)->Unit)?= null
 
     fun setOnItemClickListener(listener: (Article)-> Unit){
+        // Fragments register callbacks to navigate when an item is tapped
         onItemClickListener = listener
     }
 

@@ -11,6 +11,7 @@ import com.example.mymvvmnewsapp.models.Article
 @Dao
 interface ArticleDao {
 
+    // Insert or update an article; replaces duplicates by URL/id
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(article: Article): Long
 

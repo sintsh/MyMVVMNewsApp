@@ -62,6 +62,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
                 delay(SEARCH_NEWS_TIME_DELAY)
                 editable?.let{
                     if(editable.toString().isNotEmpty()) {
+                        // Debounced search request to avoid spamming the API
                         viewModel.searchNews(editable.toString())
                     }
                 }
@@ -145,6 +146,7 @@ class SearchNewsFragment: Fragment(R.layout.fragment_search_news) {
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
             if (shouldPaginate){
+                // Request the next page for the current search query
                 viewModel.getBreakingNews(etSearch.text.toString())
                 isScrolling = false
             }

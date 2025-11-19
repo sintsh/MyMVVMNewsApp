@@ -1,5 +1,6 @@
 package com.example.mymvvmnewsapp.util
 
+// Lightweight wrapper that lets the UI react to Loading/Success/Error
 sealed class Resource<T> (
     val data: T? = null,
     val message: String? = null

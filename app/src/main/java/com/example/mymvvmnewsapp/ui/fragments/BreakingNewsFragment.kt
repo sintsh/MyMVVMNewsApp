@@ -19,6 +19,7 @@ import com.example.mymvvmnewsapp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.example.mymvvmnewsapp.util.Resource
 
 class BreakingNewsFragment: Fragment(R.layout.fragment_breaking_news) {
+    // Shared ViewModel retrieved from host activity
     lateinit var  viewModel: NewsViewModel
 
     lateinit var newsAdapter: NewsAdapter
@@ -60,6 +61,7 @@ class BreakingNewsFragment: Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Success ->{
                     hideProgressBar()
                     response.data?.let { newsResponse ->
+                        // submitList clones the array, so call toList() preserves pagination diffing
                         newsAdapter.differ.submitList(newsResponse.articles?.toList())
                         val totalPages = newsResponse.totalResults?.div(QUERY_PAGE_SIZE)?.plus(2)
                         isLastPage = viewModel.breakingNewsPage == totalPages
@@ -118,6 +120,7 @@ class BreakingNewsFragment: Fragment(R.layout.fragment_breaking_news) {
             val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
             if (shouldPaginate){
+                // Trigger ViewModel pagination when the user reaches the end
                 viewModel.getBreakingNews("us")
                 isScrolling = false
             }
@@ -139,6 +142,7 @@ class BreakingNewsFragment: Fragment(R.layout.fragment_breaking_news) {
         rvBreakingNews.apply{
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
+            // Tie the endless-scroll listener to this RecyclerView instance
             addOnScrollListener(this@BreakingNewsFragment.scrollListener)
         }
     }

@@ -23,6 +23,7 @@ abstract class ArticleDatabase: RoomDatabase() {
         private val LOCK = Any()
 
 
+        // Ensure only one Room database instance lives inside the process
         operator fun invoke(context: Context)= instance?:synchronized(LOCK){
             instance ?: createDatabase(context).also{instance=it}
         }

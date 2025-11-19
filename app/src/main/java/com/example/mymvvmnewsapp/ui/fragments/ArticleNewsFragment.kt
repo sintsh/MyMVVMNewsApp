@@ -21,6 +21,7 @@ class ArticleNewsFragment: Fragment(R.layout.fragment_article) {
 
     lateinit var fab : FloatingActionButton
 
+    // SafeArgs exposes the strongly typed Article passed from the list screens
     val args: ArticleNewsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
